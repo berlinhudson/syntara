@@ -16,7 +16,7 @@ class AlterUserTable extends Migration
         {
             $table->string('username')->nullable()->after('email');
             $table->string('family_key', 5)->after('email');
-            $table->unique('username', 'family_key');
+            $table->unique(array('username', 'family_key'));
         });
     }
 
