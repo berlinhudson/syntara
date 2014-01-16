@@ -14,8 +14,8 @@ class AlterUserTable extends Migration
     {
         Schema::table('users', function($table)
         {
-            $table->string('username')->after('email');
-            $table->unique('username');
+            $table->string('username')->nullable()->after('email');
+            $table->string('family_key', 5)->unique()->after('email');
         });
     }
 
