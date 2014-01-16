@@ -56,6 +56,8 @@ class InstallCommand extends Command
         $this->call('migrate', array('--env' => $this->option('env'), '--package' => 'cartalyst/sentry' ) );
         $this->call('migrate', array('--env' => $this->option('env'), '--package' => 'mrjuliuss/syntara' ) );
 
+        $this->info('## IMPORTANT! Make the users.email field nullable! ##');
+
         // create admin group
         try
         {
