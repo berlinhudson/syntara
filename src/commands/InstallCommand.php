@@ -62,7 +62,7 @@ class InstallCommand extends Command
         try
         {
             $this->info('Creating "Admin" group...');
-            $group = Sentry::getGroupProvider()->create(array(
+            Sentry::getGroupProvider()->create(array(
                 'name'        => 'Admin',
                 'permissions' => array(
                     'superuser' => 1
@@ -70,10 +70,24 @@ class InstallCommand extends Command
             ));
 
             $this->info('"Admin" group created with success');
+
+            $this->info('Creating "Parents" group...');
+            Sentry::getGroupProvider()->create(array(
+                'name'        => 'Parents',
+            ));
+
+            $this->info('"Parents" group created with success');
+
+            $this->info('Creating "Kids" group...');
+            Sentry::getGroupProvider()->create(array(
+                'name'        => 'Kids',
+            ));
+
+            $this->info('"Kids" group created with success');
         }
         catch (\Cartalyst\Sentry\Groups\GroupExistsException $e)
         {
-            $this->info('"Admin" group already exists');
+            $this->info('Group already exists. ' . $e->getMessage());
         }
     }
 }
